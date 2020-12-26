@@ -1,0 +1,132 @@
+<div class="container">
+
+  <h1>Services</h1>
+
+  <div class="row">
+
+    <div class="col sm-33">
+			<div class="card">
+				<div class="card-with-icon">
+					<div class="card-icon">
+						<i class="fas fa-database"></i>
+					</div>
+					<h3>Data storage</h3>
+					<hr>
+					<div>The quality of the data is crucial in any data science project. From the collection to the storage, each step must be rigorously controled  in order to have a solid basis for the analysis and the modelisation work.</div>
+					<a data-modal="#modal1" class="modal-link">LEARN MORE</a>
+				</div>
+			</div>
+    </div>
+
+		<div class="col sm-33">
+			<div class="card">
+				<div class="card-with-icon">
+					<div class="card-icon">
+						<i class="fas fa-flask"></i>
+					</div>
+					<h3>Machine learning</h3>
+					<hr>
+					<div>Once the data is collected and properly stored, the work on predictive analysis can start. It would usually include in a first place data processing, then predictive modelling, and finally the production phase.</div>
+					<a data-modal="#modal2" class="modal-link">LEARN MORE</a>
+				</div>
+			</div>
+		</div>
+
+    <div class="col sm-33">
+
+			<div class="card">
+				<div class="card-with-icon">
+					<div class="card-icon">
+						<i class="fas fa-chart-area"></i>
+					</div>
+					<h3>Visualisation</h3>
+					<hr>
+					<div>When it comes to explain something or just to illustrate an information, visualisation can make the difference. Whether for a report or a dashboard, the content is essential but the form should not be neglicted.</div>
+					<a data-modal="#modal3" class="modal-link">LEARN MORE</a>
+				</div>
+			</div>
+		</div>
+
+  </div>
+
+</div>
+
+<div id="modal1" class="modal">
+
+	<div class="container">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				Data storage
+			</div>
+			<div class="modal-body">
+
+				<h2>Data processing</h2>
+
+        <h2>Data storage</h2>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="modal2" class="modal">
+
+	<div class="container">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				Machine learning
+			</div>
+			<div class="modal-body">
+
+        <h2>Unsupervised learning</h2>
+
+        <h2>Supervised learning</h2>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="modal3" class="modal">
+
+	<div class="container">
+		<div class="modal-content">
+			<div class="modal-header">
+				<span class="close">&times;</span>
+				Visualisation
+			</div>
+			<div class="modal-body">
+
+				<h2>Reporting</h2>
+
+        <h2>Web dashboard</h2>
+
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<script>
+
+  $(".card").inViewport(function(px){
+      if(px) $(this).addClass("popIn");
+  });
+
+  // $(".modal-link").on("click", function() {
+  //   var modal = $(this).data("modal");
+  //   $(modal).show();
+  // });
+
+  $(".modal").on("click", function(e) {
+    var className = e.target.className;
+    if(className == "modal" || className == "close"){
+      $(this).closest(".modal").hide();
+    }
+  });
+
+</script>

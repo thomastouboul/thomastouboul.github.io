@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>Thomas TOUBOUL</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Thomas TOUBOUL">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- CSS Styles -->
+  <link rel="stylesheet/less" type="text/css" href="/static/css/style.less">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+  <!-- Jquery -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- d3.js -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+
+  <!-- Additionnal fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet" type="text/css">
+
+</head>
+
+<body>
+
+  <div id="content">
+
+    <header class="navigation">
+      <div class="nav-container">
+        <nav class="float-right">
+          <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+          <ul class="nav-list">
+            <li><a class="nav-link" href="../#home">Home</a></li>
+            <li><a class="nav-link" href="../#aboutme">About me</a></li>
+            <li><a class="nav-link" href="../#resume">Resume</a></li>
+            <li><a class="nav-link" href="../#services">Services</a></li>
+            <li><a class="nav-link" href="../#portfolio">Portfolio</a></li>
+            <li><a class="nav-link" href="../#contact">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main">
+
+      <section id="home" class="active">
+
+        <div class="container">
+
+          <br><br>
+          <div class="hello">Hello! I'm</div>
+          <div class="name">Thomas TOUBOUL</div>
+          <div class="job">Data scientist</div>
+          <button class="nav-link bottom-arrow" href="../#aboutme">↓</button>
+
+        </div>
+
+      </section>
+
+      <section id="aboutme" class=""></section>
+
+      <section id="resume" class=""></section>
+
+      <section id="services" class=""></section>
+
+      <section id="portfolio" class=""></section>
+
+      <section id="contact" class=""></section>
+
+    </div>
+
+    <footer class="footer">
+
+		  <span>Copyright © 2020 All rights reserved.</span>
+
+		</footer>
+
+  </div>
+
+  <script>
+
+  $("#home").load("templates/home.html");
+  $("#aboutme").load("templates/aboutme.html");
+  $("#resume").load("templates/resume.html");
+  $("#services").load("templates/services.html");
+  $("#portfolio").load("templates/portfolio.html");
+  $("#contact").load("templates/contact.html");
+
+  (function($, win) {
+    $.fn.inViewport = function(cb) {
+     return this.each(function(i,el) {
+       function visPx(){
+         var elH = $(el).outerHeight(),
+             H = $(win).height(),
+             r = el.getBoundingClientRect(), t=r.top, b=r.bottom;
+         return cb.call(el, Math.max(0, t>0? Math.min(elH, H-t) : Math.min(b, H)));
+       }
+       visPx();
+       $(win).on("resize scroll", visPx);
+     });
+    };
+  }(jQuery, window));
+
+  $('#nav-toggle').on('click', function() {
+    $('nav ul').slideToggle();
+    if ($('#nav-toggle').hasClass('active')) {
+      $('#nav-toggle').removeClass('active');
+    } else {
+      $('#nav-toggle').addClass('active');
+    }
+  });
+
+  $('.nav-link').on('click', function() {
+    if ($('#nav-toggle').hasClass('active')) {
+      $('nav ul').slideToggle();
+      $('#nav-toggle').removeClass('active');
+    }
+    var headerSize = 50;
+    if($(window).width() < 800) {
+      headerSize = 0;
+    }
+    var scrollAnchor = $(this).attr('href').replace("../#", "");
+    var scrollNav = $('section[id="' + scrollAnchor + '"]');
+    if (scrollNav.length) {
+      var scrollPoint = scrollNav.offset().top - headerSize;
+      $('body,html').animate({
+          scrollTop: scrollPoint
+      }, 0);
+    } else {
+      window.location.href = "../";
+    }
+    return false;
+  });
+
+  </script>
+
+</body>
+
+</html>
